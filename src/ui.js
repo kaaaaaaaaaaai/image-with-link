@@ -29,6 +29,9 @@ export default class Ui {
       caption: make('div', [this.CSS.input, this.CSS.caption], {
         contentEditable: !this.readOnly,
       }),
+      link: make('div', [this.CSS.input, this.CSS.caption], {
+        contentEditable: !this.readOnly,
+      }),
     };
 
     /**
@@ -42,9 +45,11 @@ export default class Ui {
      *  </wrapper>
      */
     this.nodes.caption.dataset.placeholder = this.config.captionPlaceholder;
+    this.nodes.link.dataset.placeholder = this.config.linkPlaceholder;
     this.nodes.imageContainer.appendChild(this.nodes.imagePreloader);
     this.nodes.wrapper.appendChild(this.nodes.imageContainer);
     this.nodes.wrapper.appendChild(this.nodes.caption);
+    this.nodes.wrapper.appendChild(this.nodes.link);
     this.nodes.wrapper.appendChild(this.nodes.fileButton);
   }
 
@@ -68,6 +73,8 @@ export default class Ui {
       imagePreloader: 'image-tool__image-preloader',
       imageEl: 'image-tool__image-picture',
       caption: 'image-tool__caption',
+      //TODO: add link class
+      link: 'image-tool__link',
     };
   };
 
@@ -222,6 +229,12 @@ export default class Ui {
   fillCaption(text) {
     if (this.nodes.caption) {
       this.nodes.caption.innerHTML = text;
+    }
+  }
+
+  fillLink(text) {
+    if (this.nodes.link) {
+      this.nodes.link.innerHTML = text;
     }
   }
 

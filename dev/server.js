@@ -90,7 +90,7 @@ class ServerExample {
 
         responseJson.success = 1;
         responseJson.file = {
-          url: image.path,
+          url: "http://localhost:63343/image-with-link/dev/.tmp/upload_c34c224f108da42de3985fdbfe19813c.png",
           name: image.name,
           size: image.size
         };

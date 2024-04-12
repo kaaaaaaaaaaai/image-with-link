@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Editor.js 🤩🧦🤨 example</title>
+  <title>Editor.js 🤩🧦🤨 example2</title>
   <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
   <link href="assets/demo.css" rel="stylesheet">
   <script src="assets/json-preview.js"></script>
@@ -17,7 +17,7 @@
 <body>
   <div class="ce-example">
     <div class="ce-example__header">
-      <a class="ce-example__header-logo" href="https://codex.so/editor">Editor.js 🤩🧦🤨</a>
+      <a class="ce-example__header-logo" href="https://codex.so/editor">Edi2tor.js 🤩🧦🤨</a>
 
       <div class="ce-example__header-menu">
         <a href="https://github.com/editor-js" target="_blank">Plugins</a>
@@ -54,18 +54,21 @@
    https://github.com/editor-js/header#installation
    -->
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest/dist/editor.min.js"></script>
-  <script src="../dist/bundle.js" onload="document.getElementById('hint').hidden = true"></script><!-- Header -->
-  <script src="./tools/paragraph/dist/bundle.js" onload="document.getElementById('hint').hidden = true"></script><!-- Header -->
-  <script src="./tools/delimiter/dist/bundle.js" onload="document.getElementById('hint').hidden = true"></script><!-- Header -->
-  <script src="./tools/header/dist/bundle.js" onload="document.getElementById('hint').hidden = true"></script><!-- Header -->
-  <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@editorjs/checklist@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@editorjs/raw"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@editorjs/table@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/editorjs-header-with-anchor@latest"></script>
+  <script src="../dist/image.umd.js" onload="document.getElementById('hint').hidden = true"></script><!-- Header -->
+<!--  <script src="./tools/paragraph/dist/bundle.js" onload="document.getElementById('hint').hidden = true"></script>&lt;!&ndash; Header &ndash;&gt;-->
+<!--  <script src="./tools/delimiter/dist/bundle.js" onload="document.getElementById('hint').hidden = true"></script>&lt;!&ndash; Header &ndash;&gt;-->
+<!--  <script src="./tools/header/dist/bundle.js" onload="document.getElementById('hint').hidden = true"></script>&lt;!&ndash; Header &ndash;&gt;-->
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/paragraph@latest"></script>
+<!--  <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>-->
+<!--  <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@latest"></script>-->
+<!--  <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>-->
+<!--  <script src="https://cdn.jsdelivr.net/npm/@editorjs/checklist@latest"></script>-->
+<!--  <script src="https://cdn.jsdelivr.net/npm/@editorjs/raw"></script>-->
+<!--  <script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script>-->
+<!--  <script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script>-->
+<!--  <script src="https://cdn.jsdelivr.net/npm/@editorjs/table@latest"></script>-->
+<!--  <script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script>-->
+<!--  <script src="https://cdn.jsdelivr.net/npm/editorjs-header-with-anchor@latest"></script>-->
 
   <!-- Initialization -->
   <script>
@@ -80,70 +83,29 @@
        * Wrapper of Editor
        */
       holder: 'editorjs',
+      // readOnly:true,
 
       /**
        * Tools list
        */
       tools: {
-        embed: {
-          class: Embed,
-          inlineToolbar: true,
-          tunes: ['alignmentSetting'],
-        },
-        quote: {
-          class: Quote,
-          inlineToolbar: true,
-          tunes: ['alignmentSetting'],
-        },
-        table: {
-          class: Table,
-          inlineToolbar: true,
-          tunes: ['alignmentSetting'],
-        },
-        code: {
-          class: CodeTool,
-          inlineToolbar: true,
-          tunes: ['alignmentSetting'],
-        },
-        raw: {
-          class: RawTool,
-          inlineToolbar: true,
-          tunes: ['alignmentSetting'],
-        },
-        checklist: {
-          class: Checklist,
-          inlineToolbar: true,
-          tunes: ['alignmentSetting'],
-        },
-        list: {
-          class: List,
-          inlineToolbar: true,
-          tunes: ['alignmentSetting'],
-        },
-        header: {
-          class: Header,
-          tunes: ['alignmentSetting'],
-        },
-        delimiter: Delimiter,
         paragraph: {
           class: Paragraph,
-          inlineToolbar: false,
-          tunes: ['alignmentSetting'],
+          inlineToolbar: true,
           config:{
             css:{
               "btnColor": "btn--gray",
             }
           }
         },
-        alignmentSetting: {
-          class:AlignmentBlockTune,
-          config:{
-            default: "center",
-            blocks: {
-              header: 'center',
-              list: 'right'
+        image: {
+          class: ImageTool,
+          config: {
+            endpoints: {
+              byFile: 'http://localhost:8008/uploadFile', // Your backend file uploader endpoint
+              byUrl: 'http://localhost:8008/fetchUrl', // Your endpoint that provides uploading by Url
             }
-          },
+          }
         }
       },
       // tunes: ['alignmentBlockTune'],
@@ -155,8 +117,9 @@
       // data: { "time" : 1617670890577, "blocks" : [ { "type" : "paragraph", "data" : { "text" : "center" }, "tunes" : { "hehe" : { "alignment" : "center" } } }, { "type" : "paragraph", "data" : { "text" : "riiiiiiiiiight" } }, { "type" : "paragraph", "data" : { "text" : "hellooooooooooooooooo" } }, { "type" : "header", "data" : { "text" : "header", "level" : 2 } } ], "version" : "2.20.0" },
 
       //標準で何も設定していない
-      //data:{ "time" : 1617693971188, "blocks" : [ { "type" : "paragraph", "data" : { "text" : "center" }, "tunes" : { "hehe" : { "alignment" : "center" } } }, { "type" : "paragraph", "data" : { "text" : "riiiiiiiiiight" } }, { "type" : "paragraph", "data" : { "text" : "hellooooooooooooooooo" } }, { "type" : "header", "data" : { "text" : "header", "level" : 2 } }, { "type" : "quote", "data" : { "text" : "quote text", "caption" : "caption", "alignment" : "left" } }, { "type" : "table", "data" : { "content" : [ [ "aaaaaaaa", "bbbbbbbbbb", "cccccccc" ], [ "111111111", "2222222222", "ccccccccc" ] ] } }, { "type" : "code", "data" : { "code" : "paragraph: {\n          class: Paragraph,\n          inlineToolbar: false,\n          tunes: ['alignmentSetting'],\n          config:{\n            css:{\n              \"btnColor\": \"btn--gray\",\n            }\n          }\n        }," } }, { "type" : "raw", "data" : { "html" : "paragraph: {\n          class: Paragraph,\n          inlineToolbar: false,\n          tunes: ['alignmentSetting'],\n          config:{\n            css:{\n              \"btnColor\": \"btn--gray\",\n            }\n          }\n        }," } }, { "type" : "paragraph", "data" : { "text" : "paragrapg" } }, { "type" : "checklist", "data" : { "items" : [ { "text" : "check1", "checked" : false }, { "text" : "check2", "checked" : false }, { "text" : "check3", "checked" : false } ] } }, { "type" : "delimiter", "data" : {} }, { "type" : "paragraph", "data" : { "text" : "end" } } ], "version" : "2.20.0" },
-      data:{ "time" : 1617715359615, "blocks" : [ { "type" : "checklist", "data" : { "items" : [ { "text" : "check1", "checked" : false }, { "text" : "check2", "checked" : false }, { "text" : "check3", "checked" : false } ] }, "tunes" : { "alignmentSetting" : { "alignment" : "center" } } }, { "type" : "header", "data" : { "text" : "Header", "level" : 2 }, "tunes" : { "alignmentSetting" : { "alignment" : "left" } } } ], "version" : "2.20.0" },
+      // data:{ "time" : 1617693971188, "blocks" : [ { "type" : "paragraph", "data" : { "text" : "center" }, "tunes" : { "hehe" : { "alignment" : "center" } } }, { "type" : "paragraph", "data" : { "text" : "riiiiiiiiiight" } }, { "type" : "paragraph", "data" : { "text" : "hellooooooooooooooooo" } }, { "type" : "header", "data" : { "text" : "header", "level" : 2 } }, { "type" : "quote", "data" : { "text" : "quote text", "caption" : "caption", "alignment" : "left" } }, { "type" : "table", "data" : { "content" : [ [ "aaaaaaaa", "bbbbbbbbbb", "cccccccc" ], [ "111111111", "2222222222", "ccccccccc" ] ] } }, { "type" : "code", "data" : { "code" : "paragraph: {\n          class: Paragraph,\n          inlineToolbar: false,\n          tunes: ['alignmentSetting'],\n          config:{\n            css:{\n              \"btnColor\": \"btn--gray\",\n            }\n          }\n        }," } }, { "type" : "raw", "data" : { "html" : "paragraph: {\n          class: Paragraph,\n          inlineToolbar: false,\n          tunes: ['alignmentSetting'],\n          config:{\n            css:{\n              \"btnColor\": \"btn--gray\",\n            }\n          }\n        }," } }, { "type" : "paragraph", "data" : { "text" : "paragrapg" } }, { "type" : "checklist", "data" : { "items" : [ { "text" : "check1", "checked" : false }, { "text" : "check2", "checked" : false }, { "text" : "check3", "checked" : false } ] } }, { "type" : "delimiter", "data" : {} }, { "type" : "paragraph", "data" : { "text" : "end" } } ], "version" : "2.20.0" },
+      // data:{ "time" : 1617715359615, "blocks" : [ { "type" : "checklist", "data" : { "items" : [ { "text" : "check1", "checked" : false }, { "text" : "check2", "checked" : false }, { "text" : "check3", "checked" : false } ] }, "tunes" : { "alignmentSetting" : { "alignment" : "center" } } }, { "type" : "header", "data" : { "text" : "Header", "level" : 2 }, "tunes" : { "alignmentSetting" : { "alignment" : "left" } } } ], "version" : "2.20.0" },
+      data:{"time":1712904023463,"blocks":[{"id":"mhTl6ghSkV","type":"paragraph","data":{"text":"Hey.MeetthenewEditor.Onthispictureyoucanseeitinaction.Then,tryademo🤓"}},{"id":"FJMvDeKQ5m","type":"image","data":{"file":{"url":"http://localhost:63343/image-with-link/dev/.tmp/upload_c34c224f108da42de3985fdbfe19813c.png","name":"スクリーンショット2024-04-0921.05.07.png","size":194150},"caption":"キャプションありがとう","link":"https;;wdawdリンクあり"}},{"id":"wYQrVzjeTF","type":"paragraph","data":{"text":"Hey.MeetthenewEditor.Onthispictureyoucanseeitinaction.Then,tryademo🤓"}},{"id":"RjHAozbMy_","type":"image","data":{"file":{"url":"http://localhost:63343/image-with-link/dev/.tmp/upload_c34c224f108da42de3985fdbfe19813c.png","name":"スクリーンショット2024-04-0921.05.07.png","size":194150},"caption":"キャプションありリンクなし","link":""}},{"id":"YJ3Oc516pS","type":"paragraph","data":{"text":"Hey.MeetthenewEditor.Onthispictureyoucanseeitinaction.Then,tryademo🤓"}},{"id":"iREqihai0Q","type":"image","data":{"file":{"url":"http://localhost:63343/image-with-link/dev/.tmp/upload_c34c224f108da42de3985fdbfe19813c.png","name":"スクリーンショット2024-04-0921.05.07.png","size":194150},"caption":"","link":""}},{"id":"5Nbu2hSBva","type":"paragraph","data":{"text":"Hey.MeetthenewEditor.Onthispictureyoucanseeitinaction.Then,tryademo🤓"}},{"id":"BZ1ZQ8-SDc","type":"image","data":{"file":{"url":"http://localhost:63343/image-with-link/dev/.tmp/upload_c34c224f108da42de3985fdbfe19813c.png","name":"スクリーンショット2024-04-0921.05.07.png","size":194150},"caption":"","link":"https;;wdawdリンクありキャプなし"}}],"version":"2.26.5"},
       /**
        * This Tool will be used as default
        */

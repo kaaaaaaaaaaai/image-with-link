@@ -44,6 +44,26 @@
   }
 
   &__caption {
+    margin-bottom: 10px;
+    &[contentEditable="true"][data-placeholder]::before {
+      position: absolute !important;
+      content: attr(data-placeholder);
+      color: #707684;
+      font-weight: normal;
+      display: none;
+    }
+
+    &[contentEditable="true"][data-placeholder]:empty {
+      &::before {
+        display: block;
+      }
+
+      &:focus::before {
+        display: none;
+      }
+    }
+  }
+  &__link {
     &[contentEditable="true"][data-placeholder]::before {
       position: absolute !important;
       content: attr(data-placeholder);
@@ -115,38 +135,6 @@
       display: none;
     }
   }
-
-  /**
-   * Tunes
-   * ----------------
-   */
-
-  &--withBorder {
-    ^&__image {
-      border: 1px solid var(--border-color);
-    }
-  }
-
-  &--withBackground {
-    ^&__image {
-      padding: 15px;
-      background: var(--bg-color);
-
-      &-picture {
-        max-width: 60%;
-        margin: 0 auto;
-      }
-    }
-  }
-
-  &--stretched {
-    ^&__image {
-      &-picture {
-        width: 100%;
-      }
-    }
-  }
-
 }
 
 @keyframes image-preloader-spin {
