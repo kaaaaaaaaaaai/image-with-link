@@ -1,0 +1,9 @@
+[submodule "dev/tools/paragraph"]
+	path = dev/tools/paragraph
+	url = https://github.com/editor-js/paragraph
+[submodule "dev/tools/header"]
+	path = dev/tools/header
+	url = https://github.com/editor-js/header
+[submodule "dev/tools/delimiter"]
+	path = dev/tools/delimiter
+	url = https://github.com/editor-js/delimiter

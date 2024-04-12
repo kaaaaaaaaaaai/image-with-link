@@ -1,6 +1,6 @@
 {
-  "name": "@editorjs/image",
-  "version": "2.9.0",
+  "name": "editorjs-image-with-link",
+  "version": "1.0.0",
   "keywords": [
     "codex editor",
     "image",
@@ -9,7 +9,10 @@
   ],
   "description": "Image Tool for Editor.js",
   "license": "MIT",
-  "repository": "https://github.com/editor-js/image",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaaaaaaaaaaai/image-with-link.git"
+  },
   "files": [
     "dist"
   ],
@@ -28,10 +31,7 @@
     "lint:errors": "eslint src/ --ext .js --quiet",
     "lint:fix": "eslint src/ --ext .js --fix"
   },
-  "author": {
-    "name": "CodeX",
-    "email": "team@ifmo.su"
-  },
+  "author": "CodeX <team@ifmo.su>",
   "devDependencies": {
     "@codexteam/ajax": "^4.2.0",
     "eslint": "^6.8.0",
@@ -46,5 +46,9 @@
   },
   "dependencies": {
     "@codexteam/icons": "^0.0.6"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/kaaaaaaaaaaai/image-with-link/issues"
+  },
+  "homepage": "https://github.com/kaaaaaaaaaaai/image-with-link#readme"
 }
