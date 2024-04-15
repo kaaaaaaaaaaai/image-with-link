@@ -1,49 +1,36 @@
 ![](https://badgen.net/badge/Editor.js/v2.0/blue)
 
-# Image Tool
+# Image Tool forked from Editor.js
 
 Image Block for the [Editor.js](https://editorjs.io).
 
-![](https://capella.pics/63a03d04-3816-45b2-87b2-d85e556f0066.jpg)
+Differences with the editorjs Image Tool:
+- Blocktune has been removed.
+- Images are default-centered.
+- Input for adding links to images has been added.
 
-## Features
-
-- Uploading file from the device
-- Pasting copied content from the web
-- Pasting images by drag-n-drop
-- Pasting files and screenshots from Clipboard
-- Allows adding a border, and a background
-- Allows stretching an image to the container's full-width
-
-**Notes**
-
-This Tool requires server-side implementation for the file uploading. See [backend response format](#server-format) for more details.
-
-This Tool is also capable of uploading & displaying video files using the `<video>` element. To enable this, specify video mime-types via the 'types' config param.
-
+Everything else remains the same.
 
 ## Installation
 
 Get the package
 
 ```shell
-yarn add @editorjs/image
+npm i editorjs-image-with-link
 ```
 
 Include module at your application
 
 ```javascript
-import ImageTool from '@editorjs/image';
+import ImageTool from 'editorjs-image-with-link';
 ```
-
-Optionally, you can load this tool from [JsDelivr CDN](https://cdn.jsdelivr.net/npm/@editorjs/image@latest)
 
 ## Usage
 
 Add a new Tool to the `tools` property of the Editor.js initial config.
 
 ```javascript
-import ImageTool from '@editorjs/image';
+import ImageTool from 'editorjs-image-with-link';
 
 // or if you inject ImageTool via standalone script
 const ImageTool = window.ImageTool;
@@ -117,13 +104,11 @@ actions: [
 
 This Tool returns `data` with following format
 
-| Field          | Type      | Description                     |
-| -------------- | --------- | ------------------------------- |
+| Field          | Type      | Description                                                                               |
+|----------------|-----------|-------------------------------------------------------------------------------------------|
 | file           | `object`  | Uploaded file data. Any data got from backend uploader. Always contain the `url` property |
-| caption        | `string`  | image's caption                 |
-| withBorder     | `boolean` | add border to image             |
-| withBackground | `boolean` | need to add background          |
-| stretched      | `boolean` | stretch image to screen's width |
+| caption        | `string`  | image's caption                                                                           |
+| link           | `string`  | link url                                                                                  |
 
 
 ```json
@@ -134,9 +119,7 @@ This Tool returns `data` with following format
             "url" : "https://www.tesla.com/tesla_theme/assets/img/_vehicle_redesign/roadster_and_semi/roadster/hero.jpg"
         },
         "caption" : "Roadster // tesla.com",
-        "withBorder" : false,
-        "withBackground" : false,
-        "stretched" : true
+        "link" : "https://www.tesla.com/roadster"
     }
 }
 ```
