@@ -46,7 +46,7 @@ import './index.css';
 import Ui from './ui';
 import Uploader from './uploader';
 
-import { IconAddBorder, IconStretch, IconAddBackground, IconPicture } from '@codexteam/icons';
+import {IconPicture} from '@codexteam/icons';
 
 /**
  * @typedef {object} ImageConfig
@@ -105,9 +105,10 @@ export default class ImageTool {
    * @returns {Array}
    */
   static get tunes() {
-    return [
-    ];
+    return [];
   }
+
+
 
   /**
    * @param {object} tool - tool properties got from editor.js
@@ -117,7 +118,7 @@ export default class ImageTool {
    * @param {boolean} tool.readOnly - read-only mode flag
    * @param {BlockAPI|{}} tool.block - current Block API
    */
-  constructor({ data, config, api, readOnly, block }) {
+  constructor({data, config, api, readOnly, block}) {
     this.api = api;
     this.readOnly = readOnly;
     this.block = block;
@@ -193,6 +194,17 @@ export default class ImageTool {
   }
 
   /**
+   *
+   * @returns {object} - styles for image
+   */
+  static get sanitize() {
+    return {
+      caption: {},
+      link: false,
+    };
+  }
+
+  /**
    * Return Block data
    *
    * @public
@@ -264,7 +276,7 @@ export default class ImageTool {
        */
       tags: [
         {
-          img: { src: true },
+          img: {src: true},
         },
       ],
       /**
@@ -278,7 +290,7 @@ export default class ImageTool {
        * Drag n drop file from into the Editor
        */
       files: {
-        mimeTypes: [ 'image/*' ],
+        mimeTypes: ['image/*'],
       },
     };
   }
@@ -344,7 +356,7 @@ export default class ImageTool {
     this.ui.fillCaption(this._data.caption);
     this.ui.fillLink(this._data.link);
 
-    ImageTool.tunes.forEach(({ name: tune }) => {
+    ImageTool.tunes.forEach(({name: tune}) => {
       const value = typeof data[tune] !== 'undefined' ? data[tune] === true || data[tune] === 'true' : false;
 
       this.setTune(tune, value);
