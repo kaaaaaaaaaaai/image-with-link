@@ -29,7 +29,7 @@ export default class Ui {
       caption: make('div', [this.CSS.input, this.CSS.caption], {
         contentEditable: !this.readOnly,
       }),
-      link: make('div', [this.CSS.input, this.CSS.caption], {
+      link: make('div', [this.CSS.input, this.CSS.link], {
         contentEditable: !this.readOnly,
       }),
     };

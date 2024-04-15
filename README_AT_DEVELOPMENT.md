@@ -4,7 +4,7 @@ npm adduser
 npm version [patch|minor|major|
 
 npm publish ./
-
+git push origin tags/v1.0.3
 
 ### 開発開始手順
 yarn install
