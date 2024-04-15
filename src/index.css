@@ -12,6 +12,7 @@
       max-width: 100%;
       vertical-align: bottom;
       display: block;
+      margin: 0 auto;
     }
 
     &-preloader {
@@ -44,7 +45,10 @@
   }
 
   &__caption {
-    margin-bottom: 10px;
+    font-style: italic;
+    font-size: 12px;
+    margin-bottom: 6px;
+    padding: 6px;
     &[contentEditable="true"][data-placeholder]::before {
       position: absolute !important;
       content: attr(data-placeholder);
@@ -64,6 +68,9 @@
     }
   }
   &__link {
+    font-style: italic;
+    font-size: 12px;
+    padding: 6px;
     &[contentEditable="true"][data-placeholder]::before {
       position: absolute !important;
       content: attr(data-placeholder);
