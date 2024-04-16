@@ -101,6 +101,9 @@
     ^&__caption {
       display: none;
     }
+    ^&__link {
+      display: none;
+    }
   }
 
   .cdx-button {
