@@ -1,4 +1,4 @@
-![](https://badgen.net/badge/Editor.js/v2.0/blue)
+If you give stars, it motivates me.
 
 # Image Tool forked from Editor.js
 
